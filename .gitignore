@@ -1,11 +1,9 @@
 .idea
 
-rest/.idea/
 rest/log/
 rest/target/
 rest/*.iml
 
-web/.idea/
 web/node_modules/
 web/bower_components/
 web/public/scripts/main.js
@@ -13,3 +11,4 @@ web/public/styles/
 web/*.iml
 
 devops/*.iml
+devops/vagrant/.vagrant
