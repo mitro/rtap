@@ -11,3 +11,5 @@ web/bower_components/
 web/public/scripts/main.js
 web/public/styles/
 web/*.iml
+
+devops/*.iml
