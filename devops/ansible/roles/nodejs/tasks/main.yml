@@ -46,3 +46,13 @@
     dest=/etc/profile.d/nodejs_path.sh
     mode=0644
   when: nodejs.add_node_modules_bin_to_path
+
+- name: install gulp globally
+  npm: name=gulp
+       global=yes
+       state=present
+
+- name: install bower globally
+  npm: name=bower
+       global=yes
+       state=present
