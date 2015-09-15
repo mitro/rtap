@@ -1,41 +1,80 @@
-'use strict';
-
-var gulp = require('gulp'),
-    browserify = require('gulp-browserify'),
-    clean = require('gulp-clean'),
-    size = require('gulp-size'),
+var
+    SYMLINKS,
+    createSymlink,
+    pkg = require('./package.json'),
+    path = require('path'),
+    gulp = require('gulp'),
     stylus = require('gulp-stylus'),
-    babelify = require('babelify'),
-    envify = require('envify/custom');
+    nib = require('nib'),
+    rename = require('gulp-rename'),
+    nodemon = require('gulp-nodemon'),
+    browserify = require('browserify'),
+    source = require('vinyl-source-stream'),
+    symlink = require('gulp-symlink');
 
-gulp.task('clean', function() {
-    return gulp
-        .src(['./public/scripts/index.js'], {read: false})
-        .pipe(clean());
-});
 
-gulp.task('js', function() {
-    return gulp
-        .src('./app/index.js')
-        .pipe(browserify({transform: ['babelify', 'envify']}))
-        .pipe(gulp.dest('./public/scripts'))
-        .pipe(size());
-});
+SYMLINKS = {
+    'config': './config > node_modules',
+    'libs': './libs > node_modules'
+};
 
-gulp.task('css', function() {
+createSymlink = function (key, path) {
+    path = path.split('>');
     gulp
-        .src('./styles/*.styl')
+        .src(path[0].trim())
+        .pipe(symlink(path[1].trim() + '/' + key, { force: true }));
+};
+
+gulp.task('symlink', function () {
+    for (var key in SYMLINKS) {
+        createSymlink(key, SYMLINKS[key])
+    };
+});
+
+gulp.task('server', function () {
+    nodemon({
+        script: 'server/index.js',
+        exec: 'babel-node',
+        ignore: ['client/**/*.*', 'public/**/*.*', 'node_modules/**/*.*']
+    });
+});
+
+gulp.task('js', function () {
+    var bundle = browserify({
+        entries: ['./client/index.js'],
+        paths: ['./node_modules']
+    });
+
+    bundle.exclude('underscore');
+    bundle.require('lodash', { expose: 'underscore' });
+    bundle.require('./config/client', { expose: 'config' });
+    bundle.require('./config/langs/client', { expose: 'config/langs' });
+
+    bundle.bundle()
+        .on('error', function (err) { console.log(err.message) })
+        .pipe(source('script.js'))
+        .pipe(gulp.dest('./public/assets'));
+});
+
+gulp.task('css', function () {
+    gulp.src('./stylesheets/index.styl')
         .pipe(stylus({
-            'include css': true
+            'paths': [path.join(__dirname, '/node_modules')],
+            'include css': true,
+            'use': [nib()],
+            'urlfunc': 'embedurl',
+            'linenos': true,
+            'define': {
+                '$version': pkg.version
+            }
         }))
-        .pipe(gulp.dest('./public/styles'));
+        .pipe(rename('style.css'))
+        .pipe(gulp.dest('./public/assets/'));
 });
 
-gulp.task('watch', function(cb) {
-    gulp.watch('app/**/*.*', ['js']);
-    gulp.watch('styles/**/*.*', ['css']);
-
-    console.log('Watching files for changes...')
+gulp.task('watch', function () {
+    gulp.watch('./stylesheets/**/*.styl', ['css']);
+    gulp.watch('./client/**/*.js', ['js']);
 });
 
-gulp.task('default', ['clean', 'js', 'css'], function() {});
+gulp.task('dev', ['server', 'js', 'css', 'watch']);
