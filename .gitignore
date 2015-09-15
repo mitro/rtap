@@ -1,14 +1,4 @@
-.idea
+/.idea
 
-rest/log/
-rest/target/
-rest/*.iml
-
-web/node_modules/
-web/bower_components/
-web/public/scripts/main.js
-web/public/styles/
-web/*.iml
-
-devops/*.iml
-devops/vagrant/.vagrant
+/web/node_modules
+/web/public/assets/*
