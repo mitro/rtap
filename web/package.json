@@ -28,10 +28,15 @@
   },
   "devDependencies": {
     "babelify": "^6.3.0",
+    "browserify": "^11.1.0",
     "envify": "^3.4.0",
     "gulp-browserify": "^0.5.1",
     "gulp-clean": "^0.3.1",
+    "gulp-nodemon": "^2.0.4",
+    "gulp-rename": "^1.2.2",
     "gulp-size": "^2.0.0",
-    "gulp-stylus": "^2.0.6"
+    "gulp-stylus": "^2.0.6",
+    "gulp-symlink": "^2.1.2",
+    "vinyl-source-stream": "^1.1.0"
   }
 }
