@@ -2,6 +2,12 @@
   "name": "web",
   "version": "0.0.0",
   "private": true,
+  "browserify": {
+    "transform": [
+      "babelify",
+      "reactify"
+    ]
+  },
   "dependencies": {
     "backbone": "^1.2.3",
     "backbone.localstorage": "^1.1.16",
@@ -37,6 +43,7 @@
     "gulp-size": "^2.0.0",
     "gulp-stylus": "^2.0.6",
     "gulp-symlink": "^2.1.2",
+    "reactify": "^1.1.1",
     "vinyl-source-stream": "^1.1.0"
   }
 }

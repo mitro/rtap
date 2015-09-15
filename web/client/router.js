@@ -7,10 +7,11 @@ import user from './modules/user';
 
 class Router extends BaseRouter {
     constructor () {
-        super();
+      super();
     }
 
     middleware () {
+      this.page('/', notAuth);
     }
 }
 
