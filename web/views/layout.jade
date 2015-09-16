@@ -1,0 +1,16 @@
+doctype html
+html
+  head
+    title!= title
+
+  body
+    #app-node!= body
+
+    script.
+      window.app = {
+        config: !{JSON.stringify(config)},
+        env: !{JSON.stringify(env)},
+        langs: !{JSON.stringify(langs)}
+      };
+
+    script(type='text/javascript', src='/assets/script.js')
