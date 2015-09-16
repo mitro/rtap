@@ -5,9 +5,9 @@ export default {
   },
   mongodb: {
     host: 'localhost',
-    database: 'walkapp'
+    database: 'rtap'
   },
-  secret: 'whatdidyouwanttoseehere',
+  secret: 'ifyouwannabeoksaythisphraseeveryday',
   jwt: {
     expires: 1440
   }
