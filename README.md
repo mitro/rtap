@@ -13,7 +13,7 @@
 
   `sudo npm install -g gulp nodemon babel`
 
-3. Отредактируйте hosts, чтобы использовать удобный локальный URL-адрес rtap.dev
+3. Отредактируйте hosts, чтобы использовать удобный локальный URL-адрес http://rtap.dev
 
   `echo "127.0.0.1 rtap.dev" >> /etc/hosts`
 
@@ -37,7 +37,7 @@
 
 5. Проверьте работоспособность api-приложения
 
-  Перейдите по ссылке [http://rtap.dev:8080/](http://rtap.dev:8080/api/status).
+  Перейдите по ссылке [http://rtap.dev:8080/api/status](http://rtap.dev:8080/api/status).
   Вы должны увидеть информационное сообщение.
 
 ### Установка web-приложения
