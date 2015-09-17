@@ -1,0 +1,49 @@
+---
+
+- name: checkout repo
+  git: repo=https://github.com/mitro/rtap.git
+       dest=/tmp/sources
+       version=automate-deployment
+  become: false
+
+- name: install npm modules
+  command: npm install
+  args:
+    chdir: /tmp/sources/web
+
+- name: run gulp
+  command: "{{ item }}"
+  with_items:
+    - gulp symlink
+    - gulp js
+    - gulp css
+  args:
+    chdir: /tmp/sources/web
+
+- name: check list of running nodejs apps
+  command: forever list
+  register: forever_list
+  changed_when: false
+
+- name: stop nodejs app
+  command: forever stop /var/www/web/server/index.js
+  when: "forever_list.stdout.find('/var/www/web/server/index.js') != -1"
+  become: false
+
+- name: remove app folder
+  file: path=/var/www/web
+        state=absent
+
+- name: create app folfer
+  command: mkdir -p /var/www/web
+
+- name: copy app to app folder
+  command: cp -a /tmp/sources/web /var/www
+
+- name: remove cloned git repo
+  file: path=/tmp/sources
+        state=absent
+
+- name: start nodejs app
+  command: forever start -c babel-node /var/www/web/server/index.js
+  become: false

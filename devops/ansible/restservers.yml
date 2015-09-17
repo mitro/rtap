@@ -1,5 +1,6 @@
 ---
 - hosts: restservers
   roles:
+    - common
     - nodejs
   become: true
