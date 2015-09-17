@@ -1,0 +1,5 @@
+---
+- hosts: restservers
+  roles:
+    - nodejs
+  become: true
