@@ -4,4 +4,4 @@
     - common
     - nodejs
     - web-app
-  become: yes
+  become: true

@@ -1,0 +1,5 @@
+---
+
+tmp_source_folder: /tmp/sources
+root_app_folder: /var/www
+web_app_folder: /var/www/web

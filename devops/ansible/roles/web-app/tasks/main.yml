@@ -2,7 +2,7 @@
 
 - name: checkout repo
   git: repo=https://github.com/mitro/rtap.git
-       dest=/tmp/sources
+       dest={{ tmp_source_folder }}
        version=automate-deployment
   become: false
 
@@ -12,30 +12,30 @@
   changed_when: false
 
 - name: stop nodejs app
-  command: forever stop /var/www/web/server/index.js
-  when: "forever_list.stdout.find('/var/www/web/server/index.js') != -1"
+  command: forever stop {{ web_app_folder }}/server/index.js
+  when: "forever_list.stdout.find('{{ web_app_folder }}/server/index.js') != -1"
   become: false
 
 - name: (re)create app folfer
-  command: mkdir -p /var/www/web
+  command: mkdir -p {{ web_app_folder }}
 
 - name: copy web app to app folder
-  command: cp -a /tmp/sources/web /var/www
+  command: cp -a {{ tmp_source_folder }}/web {{ root_app_folder }}
 
 - name: remove cloned git repo
-  file: path=/tmp/sources
+  file: path={{ tmp_source_folder }}
         state=absent
 
 - name: install npm modules
   command: npm install
   args:
-    chdir: /var/www/web
+    chdir: "{{ web_app_folder }}"
 
 - name: run gulp
   command: gulp
   args:
-    chdir: /var/www/web
+    chdir: "{{ web_app_folder }}"
 
 - name: start nodejs app
-  command: forever start -c babel-node /var/www/web/server/index.js
+  command: forever start -c babel-node {{ web_app_folder }}/server/index.js
   become: false
