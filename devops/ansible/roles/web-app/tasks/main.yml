@@ -16,7 +16,11 @@
   when: "forever_list.stdout.find('{{ web_app_folder }}/server/index.js') != -1"
   become: false
 
-- name: (re)create app folfer
+- name: remove app folder
+  file: path={{ web_app_folder }}
+        state=absent
+
+- name: create app folder
   command: mkdir -p {{ web_app_folder }}
 
 - name: copy web app to app folder
