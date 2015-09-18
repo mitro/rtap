@@ -1,5 +1,11 @@
 ---
 
+- name: checkout repo
+  git: repo=https://github.com/mitro/rtap.git
+       dest=/tmp/sources
+       version=automate-deployment
+  become: false
+
 - name: check list of running nodejs apps
   command: forever list
   register: forever_list
@@ -10,12 +16,15 @@
   when: "forever_list.stdout.find('/var/www/web/server/index.js') != -1"
   become: false
 
-- name: checkout repo
-  git: repo=https://github.com/mitro/rtap.git
-       dest=/var/www/web
-       version=automate-deployment
-       clone=no
-  become: false
+- name: (re)create app folfer
+  command: mkdir -p /var/www/web
+
+- name: copy web app to app folder
+  command: cp -a /tmp/sources/web /var/www
+
+- name: remove cloned git repo
+  file: path=/tmp/sources
+        state=absent
 
 - name: install npm modules
   command: npm install
