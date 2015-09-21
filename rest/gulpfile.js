@@ -32,8 +32,4 @@ gulp.task('dev', function () {
   });
 });
 
-gulp.task('default', function () {
-  runSequence(
-    'symlink'
-  );
-});
+gulp.task('default', ['symlink']);

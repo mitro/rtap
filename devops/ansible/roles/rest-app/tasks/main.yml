@@ -6,24 +6,24 @@
        version=automate-deployment
   become: false
 
-- name: check if web app service runs
+- name: check if rest app service runs
   stat: path={{ pid_file }}
   register: service_status
 
-- name: stop web app service if launched
+- name: stop rest app service if launched
   service: name={{ service_name }}
            state=stopped
   when: service_status.stat.exists
 
 - name: remove app folder
-  file: path={{ web_app_folder }}
+  file: path={{ rest_app_folder }}
         state=absent
 
 - name: create app folder
-  command: mkdir -p {{ web_app_folder }}
+  command: mkdir -p {{ rest_app_folder }}
 
-- name: copy web app to app folder
-  command: cp -a {{ tmp_source_folder }}/web {{ root_app_folder }}
+- name: copy rest app to app folder
+  command: cp -a {{ tmp_source_folder }}/rest {{ root_app_folder }}
 
 - name: remove cloned git repo
   file: path={{ tmp_source_folder }}
@@ -32,22 +32,22 @@
 - name: install npm modules
   command: npm install
   args:
-    chdir: "{{ web_app_folder }}"
+    chdir: "{{ rest_app_folder }}"
 
 - name: run gulp
   command: gulp
   args:
-    chdir: "{{ web_app_folder }}"
+    chdir: "{{ rest_app_folder }}"
 
 - name: copy upstart config for web app
   template: src=upstart.conf dest=/etc/init/{{ service_name }}.conf mode=0644
 
-- name: start web app service
+- name: start rest app service
   action: service name={{ service_name }} state=restarted
 
 - name: inform slack
   slack:
     domain: dtech-rt.slack.com
     token: T0921K5BJ/B0B1XBHAN/ynbRCRRXqvyXyJuX5obu6Ji2
-    msg: "Веб-приложение обновлено"
+    msg: "REST API-приложение обновлено"
   sudo: false

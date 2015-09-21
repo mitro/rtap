@@ -3,8 +3,9 @@
 tmp_source_folder: /tmp/sources
 root_app_folder: /var/www
 web_app_folder: /var/www/web
-log_file: /var/log/rtap-web-app.log
-pid_file: /var/run/rtap-web-app.pid
+log_file: /var/log/rtap_web_app.log
+pid_file: /var/run/rtap_web_app.pid
+service_name: rtap_web_app
 
 forever_min_uptime: 5000
 forever_spin_sleep_time: 2000

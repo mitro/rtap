@@ -1,0 +1,11 @@
+---
+
+tmp_source_folder: /tmp/sources
+root_app_folder: /var/www
+rest_app_folder: /var/www/rest
+log_file: /var/log/rtap_rest_app.log
+pid_file: /var/run/rtap_rest_app.pid
+service_name: rtap_rest_app
+
+forever_min_uptime: 5000
+forever_spin_sleep_time: 2000
