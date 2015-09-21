@@ -3,7 +3,6 @@
 - name: checkout repo
   git: repo=https://github.com/mitro/rtap.git
        dest={{ tmp_source_folder }}
-       version=automate-deployment
   become: false
 
 - name: check if web app service runs

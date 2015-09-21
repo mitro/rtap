@@ -3,7 +3,6 @@
 - name: checkout repo
   git: repo=https://github.com/mitro/rtap.git
        dest={{ tmp_source_folder }}
-       version=automate-deployment
   become: false
 
 - name: check if rest app service runs
@@ -39,7 +38,7 @@
   args:
     chdir: "{{ rest_app_folder }}"
 
-- name: copy upstart config for web app
+- name: copy upstart config for rest app
   template: src=upstart.conf dest=/etc/init/{{ service_name }}.conf mode=0644
 
 - name: start rest app service
