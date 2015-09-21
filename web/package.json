@@ -9,6 +9,7 @@
     ]
   },
   "dependencies": {
+    "babel": "^5.8.23",
     "backbone": "^1.2.3",
     "backbone.localstorage": "^1.1.16",
     "body-parser": "^1.13.3",
