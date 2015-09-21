@@ -1,0 +1,7 @@
+---
+- hosts: restservers
+  roles:
+    - common
+    - nodejs
+    - rest-app
+  become: true

@@ -28,6 +28,8 @@ gulp.task('symlink', function () {
 gulp.task('dev', function () {
   nodemon({
     script: 'server/index.js',
-    exec: 'babel-node'
+    exec: 'node'
   });
 });
+
+gulp.task('default', ['symlink']);

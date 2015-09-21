@@ -1,0 +1,52 @@
+---
+
+- name: checkout repo
+  git: repo=https://github.com/mitro/rtap.git
+       dest={{ tmp_source_folder }}
+  become: false
+
+- name: check if rest app service runs
+  stat: path={{ pid_file }}
+  register: service_status
+
+- name: stop rest app service if launched
+  service: name={{ service_name }}
+           state=stopped
+  when: service_status.stat.exists
+
+- name: remove app folder
+  file: path={{ rest_app_folder }}
+        state=absent
+
+- name: create app folder
+  command: mkdir -p {{ rest_app_folder }}
+
+- name: copy rest app to app folder
+  command: cp -a {{ tmp_source_folder }}/rest {{ root_app_folder }}
+
+- name: remove cloned git repo
+  file: path={{ tmp_source_folder }}
+        state=absent
+
+- name: install npm modules
+  command: npm install
+  args:
+    chdir: "{{ rest_app_folder }}"
+
+- name: run gulp
+  command: gulp
+  args:
+    chdir: "{{ rest_app_folder }}"
+
+- name: copy upstart config for rest app
+  template: src=upstart.conf dest=/etc/init/{{ service_name }}.conf mode=0644
+
+- name: start rest app service
+  action: service name={{ service_name }} state=restarted
+
+- name: inform slack
+  slack:
+    domain: dtech-rt.slack.com
+    token: T0921K5BJ/B0B1XBHAN/ynbRCRRXqvyXyJuX5obu6Ji2
+    msg: "REST API-приложение обновлено"
+  sudo: false
