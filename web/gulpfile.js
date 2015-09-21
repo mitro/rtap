@@ -35,7 +35,7 @@ gulp.task('symlink', function () {
 gulp.task('server', function () {
   nodemon({
     script: 'server/index.js',
-    exec: 'babel-node',
+    exec: 'node',
     ignore: ['client/**/*.*', 'public/**/*.*', 'node_modules/**/*.*']
   });
 });

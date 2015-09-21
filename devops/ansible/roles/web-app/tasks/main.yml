@@ -6,15 +6,23 @@
        version=automate-deployment
   become: false
 
-- name: check list of running nodejs apps
-  command: forever list
-  register: forever_list
-  changed_when: false
+#- name: check list of running nodejs apps
+#  command: forever list
+#  register: forever_list
+#  changed_when: false
+#
+#- name: stop nodejs app
+#  command: forever stop {{ web_app_folder }}/server/index.js
+#  when: "forever_list.stdout.find('{{ web_app_folder }}/server/index.js') != -1"
+#  become: false
+- name: check if web app service runs
+  stat: path={{ pid_file }}
+  register: service_status
 
-- name: stop nodejs app
-  command: forever stop {{ web_app_folder }}/server/index.js
-  when: "forever_list.stdout.find('{{ web_app_folder }}/server/index.js') != -1"
-  become: false
+- name: stop web app service if launched
+  service: name=web_app
+           state=stopped
+  when: service_status.stat.exists
 
 - name: remove app folder
   file: path={{ web_app_folder }}
@@ -40,6 +48,12 @@
   args:
     chdir: "{{ web_app_folder }}"
 
-- name: start nodejs app
-  command: forever start -c babel-node {{ web_app_folder }}/server/index.js
-  become: false
+#- name: start nodejs app
+#  command: forever start -c babel-node {{ web_app_folder }}/server/index.js
+#  become: false
+
+- name: copy upstart config for web app
+  template: src=web_app.conf dest=/etc/init mode=0644
+
+- name: start web app service
+  action: service name=web_app state=restarted
