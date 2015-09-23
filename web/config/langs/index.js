@@ -1,4 +1,4 @@
-import en from './en';
+import ru from './ru';
 
 
 class Langs {
@@ -11,6 +11,6 @@ class Langs {
   }
 }
 
-Langs.prototype.en = en;
+Langs.prototype.ru = ru;
 
 export default new Langs()

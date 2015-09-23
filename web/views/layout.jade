@@ -3,14 +3,16 @@ html
   head
     title!= title
 
+    link(rel='stylesheet', href='/assets/style.css')
   body
-    #app-node!= body
+    #app-node!= html
 
     script.
       window.app = {
         config: !{JSON.stringify(config)},
         env: !{JSON.stringify(env)},
-        langs: !{JSON.stringify(langs)}
+        langs: !{JSON.stringify(langs)},
+        stores: !{stores}
       };
 
     script(type='text/javascript', src='/assets/script.js')

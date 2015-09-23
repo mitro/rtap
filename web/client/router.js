@@ -1,18 +1,29 @@
 import BaseRouter from './base/router';
 import vent from './modules/vent';
-import auth from './middlewares/auth';
-import notAuth from './middlewares/not_auth';
-import user from './modules/user';
+import currentUser from './stores/current_user';
 
 
-class Router extends BaseRouter {
-    constructor () {
-      super();
-    }
+export default class Router extends BaseRouter {
+  run () {
+    super.run();
+  }
 
-    middleware () {
-      this.page('/', notAuth);
-    }
+  middleware () {
+    this.use('/', this.notAuth);
+  }
+
+  redirect () {
+
+  }
+
+  router () {
+    this.route('/', 'welcome.index');
+  }
 }
 
-export default new Router();
+Router.prototype.controllers = {
+  welcome: require('./controllers/welcome'),
+};
+
+Router.prototype.auth = require('./middlewares/auth');
+Router.prototype.notAuth = require('./middlewares/not_auth');

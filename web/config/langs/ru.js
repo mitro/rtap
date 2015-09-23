@@ -4,11 +4,11 @@ export default {
   },
 
   brand: {
-
+    name: 'Road Traffic Auto Portal'
   },
 
   titles: {
-
+    welcome: 'Добро пожаловать'
   },
 
   captions: {
