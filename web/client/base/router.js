@@ -4,38 +4,35 @@ import vent from '../modules/vent';
 
 
 export default class Router {
-  constructor () {
+  _mapRoutes () {
+    if (this.middleware) this.middleware();
+    if (this.redirect) this.redirect();
+    if (this.router) this.router();
+  }
+
+  run () {
     this.page = page;
     this.ctor = null;
 
     this.page('*', this.createQuery);
-
-    if (this.middleware) {
-      this.middleware();
-    }
-
-    if (this.redirect) {
-      this.redirect();
-    }
-
-    if (this.router) {
-      this.router();
-    }
-
+    this._mapRoutes();
     this.page.start();
 
-    vent.on('routeTo', (url) => this.routeTo(url))
+    vent.on('routeTo', (url) => this.routeTo(url));
   }
 
   routeTo (url) {
     this.page(url);
   }
 
+  use (...args) {
+    this.page(...args);
+  }
+
   route (url, action) {
-    var
-      temp = action.split('.'),
-      method = temp[1],
-      Controller = this.controllers[temp[0]];
+    let temp = action.split('.');
+    let method = temp[1];
+    let Controller = this.controllers[temp[0]];
 
     if (!Controller) {
       throw new Error(`undefined controller "${temp[0]}"`);
@@ -72,9 +69,8 @@ export default class Router {
   }
 
   createQuery (ctx, next) {
-    var
-      query = {},
-      params = ctx.querystring.split('&');
+    let query = {};
+    let params = ctx.querystring.split('&');
 
     for (let [index, param] of params.entries()) {
       param = param.split('=');

@@ -1,8 +1,9 @@
 import page from 'page';
-import user from '../modules/user';
+import currentUser from '../stores/current_user';
 
-export default function (ctx, next) {
-  if (!user.authorized()) {
+
+export default function auth (ctx, next) {
+  if (!currentUser.authorized()) {
     return page.redirect('/signin');
   }
 

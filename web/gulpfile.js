@@ -11,7 +11,9 @@ var
   browserify = require('browserify'),
   source = require('vinyl-source-stream'),
   symlink = require('gulp-symlink'),
-  runSequence = require('run-sequence');
+  runSequence = require('run-sequence'),
+  jscs = require('gulp-jscs'),
+  through2 = require('through2');
 
 
 SYMLINKS = {
@@ -73,12 +75,25 @@ gulp.task('css', function () {
     .pipe(gulp.dest('./public/assets/'));
 });
 
+gulp.task('jscs', function () {
+  gulp
+    .src(['./client/**/*.js', './server/**/*.js', './config/**/*.js', './libs/**/*.js'])
+    .pipe(jscs())
+    // hook to check over than 16 files
+    // see https://github.com/jscs-dev/gulp-jscs/issues/22
+    .pipe(through2.obj(function(file, encoding, callback) {
+      callback();
+    }));
+});
+
 gulp.task('watch', function () {
   gulp.watch('./stylesheets/**/*.styl', ['css']);
   gulp.watch('./client/**/*.js', ['js']);
 });
 
 gulp.task('dev', ['server', 'js', 'css', 'watch']);
+
+gulp.task('test', ['jscs']);
 
 gulp.task('default', function () {
   runSequence(

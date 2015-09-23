@@ -1,14 +1,13 @@
 import React from 'react';
 import Component from '../base/component';
-import lang from '../lang';
 
 
 export default class Welcome extends Component {
   title () {
-    return "Road Traffic Auto Portal";
+    return `${this.lang.brand.name} | ${this.lang.titles.welcome}`;
   }
 
   render () {
-    return <div>Hello, world!!!</div>
+    return <div>Hello, world!</div>;
   }
 }

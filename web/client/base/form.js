@@ -1,9 +1,9 @@
 import React from 'react';
 import _ from 'lodash';
 import ReactLink from 'react/lib/ReactLink';
+import error from '../modules/error';
 import { getValue, updateValue } from 'libs/utils';
 import Component from './component';
-import lang from '../lang';
 import { format } from 'libs/utils';
 
 
@@ -22,28 +22,35 @@ export default class Form extends Component {
     return getValue(keyPath, this.state);
   }
 
-  showError (error) {
-    if (_.isString(error)) {
-      return alert(lang.errors[error]);
-    }
+  showError (code) {
+    let message = error(code);
+    this.showMessage('error', message);
+  }
 
-    var messages = [];
-
-    for (let key in error) {
-      let message = _.capitalize(format(lang.errors[error[key]], key));
-      messages.push(message);
-    }
-
-    alert(messages.join('\n'));
+  showMessage (type, text) {
+    this.setState({ message: { type, text } });
+    this.forceUpdate();
   }
 
   handleAPIError (xhr) {
-    this.showError('unexpected_error');
+    let response = xhr.responseJSON;
+    let messages = [];
+
+    if (_.has(response, 'error.fields')) {
+      _.forEach(response.error.fields, (field) => {
+        messages.push(field.message);
+      });
+    } else {
+      messages.push(response.error.message);
+    }
+
+    this.showMessage('error', messages.join('\n'));
   }
 
   handleSubmit (event) {
     event.preventDefault();
-    var model = _.clone(this.state.model);
+
+    let model = _.clone(this.state.model);
     this.save(model);
   }
 
