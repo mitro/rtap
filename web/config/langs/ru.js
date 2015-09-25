@@ -4,15 +4,17 @@ export default {
   },
 
   brand: {
-    name: 'Road Traffic Auto Portal'
+    name: 'Road Traffic Auto Portal',
+    tagline: 'Тут наш слоган',
   },
 
   titles: {
-    welcome: 'Добро пожаловать'
+    welcome: 'Добро пожаловать',
   },
 
   captions: {
-
+    about: 'О проекте',
+    start: 'Поехали',
   },
 
   fields: {
