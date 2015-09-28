@@ -46,7 +46,7 @@ class Server {
 
     this.app.use(morgan(config.debug ? 'dev' : 'combined'));
 
-    // Set publis assets.
+    // Set public assets.
     this.app.use(express.static('public'));
 
     // Set language.
