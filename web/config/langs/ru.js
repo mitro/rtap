@@ -5,7 +5,7 @@ export default {
 
   brand: {
     name: 'Road Traffic Auto Portal',
-    tagline: 'Тут наш слоган',
+    tagline: 'Продолжай движение',
   },
 
   titles: {
