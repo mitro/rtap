@@ -37,6 +37,7 @@
   command: gulp
   args:
     chdir: "{{ rest_app_folder }}"
+  become: false
 
 - name: copy upstart config for rest app
   template: src=upstart.conf dest=/etc/init/{{ service_name }}.conf mode=0644

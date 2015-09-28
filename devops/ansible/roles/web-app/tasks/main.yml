@@ -37,6 +37,7 @@
   command: gulp
   args:
     chdir: "{{ web_app_folder }}"
+  become: false
 
 - name: copy upstart config for web app
   template: src=upstart.conf dest=/etc/init/{{ service_name }}.conf mode=0644
