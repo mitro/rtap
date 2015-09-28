@@ -2,3 +2,5 @@
 
 /web/node_modules
 /web/public/assets/*
+
+npm-debug.log
