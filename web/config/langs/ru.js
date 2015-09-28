@@ -5,6 +5,7 @@ export default {
 
   brand: {
     name: 'Road Traffic Auto Portal',
+    shortname: 'RTAP',
     tagline: 'Продолжай движение',
   },
 
@@ -13,12 +14,14 @@ export default {
   },
 
   captions: {
+    signin: 'Войти',
+    signup: 'Зарегистрироваться',
     about: 'О проекте',
-    start: 'Поехали',
   },
 
   fields: {
-
+    username: 'Имя пользователя',
+    password: 'Пароль',
   },
 
   messages: {
