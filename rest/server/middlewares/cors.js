@@ -3,7 +3,7 @@ import url from 'url';
 
 
 var
-  CORS_REGEXP = /(?:.*\.)?walk\.(?:dev|me)$/,
+  CORS_REGEXP = /(?:.*\.)?rtap\.(?:dev|me)$/,
   allowedHeaders = [
     'Accept', 'Content-Type', 'X-Access-Token'
   ].join(', ');
@@ -31,4 +31,4 @@ export function dev (req, res, next) {
   } else {
     next();
   }
-};
+}

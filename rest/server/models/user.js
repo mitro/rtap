@@ -10,6 +10,13 @@ var schema = new mongoose.Schema({
     required: v.required(),
     validate: [v.badUsername(), v.maxLength(12), v.minLength(4), v.alphanumeric()]
   },
+  full_name: {
+    type: String
+  },
+  email: {
+    type: String,
+    required: v.required(),
+  },
   password: {
     type: String,
     required: v.required(),
@@ -18,9 +25,6 @@ var schema = new mongoose.Schema({
   created: {
     type: Date,
     required: v.required()
-  },
-  full_name: {
-    type: String
   },
   image_url: {
     type: String,
@@ -47,6 +51,6 @@ schema.methods.toJSON = function () {
   delete json.password;
 
   return json;
-}
+};
 
 export default mongoose.model('User', schema);
