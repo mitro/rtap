@@ -2,41 +2,49 @@ import React from 'react';
 import Component from '../base/component';
 
 
-export default class Welcome extends Component {
+export default class Signup extends Component {
   title () {
-    return `${this.lang.brand.name} | ${this.lang.titles.welcome}`;
+    return `${this.lang.brand.name} | ${this.lang.titles.signup}`;
   }
 
   render () {
-    return <div className="l-layout p-welcome">
+    return <div className="l-layout p-signup">
       <div className="l-sidebar">
-        <form className="p-w-login-form">
+        <form className="p-s-signup-form">
+          <div className="m-control-group">
+            <span className="m-cg-icon icon-mail-alt"></span>
+            <input type="text" className="m-control" placeholder={this.lang.fields.email} required />
+          </div>
+          <div className="m-control-group">
+            <span className="m-cg-icon icon-user"></span>
+            <input type="text" className="m-control" placeholder={this.lang.fields.full_name} required/>
+          </div>
           <div className="m-control-list">
-            <div className="m-control-group">
-              <span className="m-cg-icon icon-mail-alt"></span>
-              <input type="text" className="m-control" placeholder={this.lang.fields.email} required />
-            </div>
             <div className="m-control-group">
               <span className="m-cg-icon icon-lock"></span>
               <input type="password" className="m-control" placeholder={this.lang.fields.password} required />
             </div>
+            <div className="m-control-group">
+              <span className="m-cg-icon icon-lock"></span>
+              <input type="password" className="m-control" placeholder={this.lang.fields.confirm_password} required />
+            </div>
           </div>
           <p className="l-text-center">
-            <button type="submit" className="m-btn">{this.lang.captions.signin}</button>
+            <button type="submit" className="m-btn">{this.lang.captions.signup}</button>
           </p>
         </form>
         <p>
-          <a href="/signup" className="m-btn m-btn-block m-btn-link">{this.lang.captions.signup}</a>
+          <a href="/" className="m-btn m-btn-block m-btn-link">{this.lang.captions.signin}</a>
         </p>
       </div>
       <div className="l-content">
-        <div className="p-w-logo">
+        <div className="p-s-logo">
           <div className="m-logo m-logo-large">
             <h1 className="m-l-title">{this.lang.brand.name}</h1>
             <h2 className="m-l-tagline">{this.lang.brand.tagline}</h2>
           </div>
         </div>
-        <div className="p-w-news">
+        <div className="p-s-news">
           <div className="m-news">
             <header className="m-n-title">Новости</header>
             <article className="m-n-text">Душа моя озарена неземной радостью, как эти чудесные весенние утра, которыми я наслаждаюсь от всего сердца. Я совсем один и блаженствую в здешнем краю, словно созданном для таких, как я. Я так счастлив, мой друг, так упоен ощущением покоя, что искусство мое страдает от этого. Ни одного штриха не мог бы я сделать, а никогда не был таким большим художником, как в эти минуты."</article>

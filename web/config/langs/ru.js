@@ -11,6 +11,7 @@ export default {
 
   titles: {
     welcome: 'Добро пожаловать',
+    signup: 'Регистрация',
   },
 
   captions: {
@@ -20,8 +21,10 @@ export default {
   },
 
   fields: {
-    username: 'Имя пользователя',
+    email: 'Электронная почта',
+    full_name: 'Полное имя',
     password: 'Пароль',
+    confirm_password: 'Подтвердите пароль',
   },
 
   messages: {
