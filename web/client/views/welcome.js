@@ -1,5 +1,6 @@
 import React from 'react';
 import Form from '../base/form';
+import auth from '../modules/auth';
 
 
 export default class Welcome extends Form {
@@ -7,18 +8,27 @@ export default class Welcome extends Form {
     return `${this.lang.brand.name} | ${this.lang.titles.welcome}`;
   }
 
+  initState () {
+    return { model: {} };
+  }
+
+  save (model) {
+    let dfd = auth.signin(model);
+    dfd.fail((xhr) => this.handleAPIError(xhr));
+  }
+
   render () {
     return <div className="l-layout p-welcome">
       <div className="l-sidebar">
-        <form className="p-w-login-form">
+        <form className="p-w-login-form" onSubmit={this.handleSubmit}>
           <div className="m-control-list">
             <div className="m-control-group">
               <span className="m-cg-icon icon-user"></span>
-              <input type="text" className="m-control" placeholder={this.lang.fields.username} required />
+              <input valueLink={this.linkState('model.username')} type="text" className="m-control" placeholder={this.lang.fields.username} required />
             </div>
             <div className="m-control-group">
               <span className="m-cg-icon icon-lock"></span>
-              <input type="password" className="m-control" placeholder={this.lang.fields.password} required />
+              <input valueLink={this.linkState('model.password')} type="password" className="m-control" placeholder={this.lang.fields.password} required />
             </div>
           </div>
           <p className="l-text-center">

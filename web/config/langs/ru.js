@@ -17,6 +17,7 @@ export default {
   captions: {
     signin: 'Войти',
     signup: 'Зарегистрироваться',
+    logout: 'Выйти',
     about: 'О проекте',
   },
 
