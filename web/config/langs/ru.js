@@ -21,6 +21,7 @@ export default {
   },
 
   fields: {
+    username: 'Имя пользователя',
     email: 'Электронная почта',
     full_name: 'Полное имя',
     password: 'Пароль',

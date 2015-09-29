@@ -1,8 +1,8 @@
 import React from 'react';
-import Component from '../base/component';
+import Form from '../base/form';
 
 
-export default class Welcome extends Component {
+export default class Welcome extends Form {
   title () {
     return `${this.lang.brand.name} | ${this.lang.titles.welcome}`;
   }
@@ -13,8 +13,8 @@ export default class Welcome extends Component {
         <form className="p-w-login-form">
           <div className="m-control-list">
             <div className="m-control-group">
-              <span className="m-cg-icon icon-mail-alt"></span>
-              <input type="text" className="m-control" placeholder={this.lang.fields.email} required />
+              <span className="m-cg-icon icon-user"></span>
+              <input type="text" className="m-control" placeholder={this.lang.fields.username} required />
             </div>
             <div className="m-control-group">
               <span className="m-cg-icon icon-lock"></span>
