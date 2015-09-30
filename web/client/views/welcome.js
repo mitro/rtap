@@ -1,5 +1,6 @@
 import React from 'react';
 import Form from '../base/form';
+import Navbar from './components/navbar';
 import auth from '../modules/auth';
 
 
@@ -19,7 +20,7 @@ export default class Welcome extends Form {
 
   render () {
     return <div className="l-layout p-welcome">
-      <div className="l-sidebar">
+      {/*<div className="l-sidebar">
         <form className="p-w-login-form" onSubmit={this.handleSubmit}>
           <div className="m-control-list">
             <div className="m-control-group">
@@ -39,6 +40,8 @@ export default class Welcome extends Form {
           <a href="/signup" className="m-btn m-btn-block m-btn-link">{this.lang.captions.signup}</a>
         </p>
       </div>
+      */}
+      <Navbar/>
       <div className="l-content">
         <div className="p-w-logo">
           <div className="m-logo m-logo-large">
@@ -53,11 +56,6 @@ export default class Welcome extends Form {
             <article className="m-n-text">Задача организации, в особенности же новая модель организационной деятельности требуют определения и уточнения форм развития. Повседневная практика показывает, что сложившаяся структура организации позволяет выполнять важные задания по разработке соответствующий условий активизации. Товарищи!</article>
             <article className="m-n-text">Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных домах на берегу Семантика большого языкового океана. Маленький ручеек Даль журчит по всей стране и обеспечивает ее всеми необходимыми правилами. Эта парадигматическая страна, в которой жаренные члены предложения залетают прямо в рот. Даже всемогущая пунктуация не имеет власти над рыбными текстами, ведущими безорфографичный образ жизни.</article>
           </div>
-        </div>
-      </div>
-      <div className="l-footer">
-        <div className='m-footer'>
-          © 2015 {this.lang.brand.shortname} | <a href="/about">{this.lang.captions.about}</a>
         </div>
       </div>
     </div>
