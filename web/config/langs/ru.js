@@ -11,6 +11,7 @@ export default {
 
   titles: {
     welcome: 'Добро пожаловать',
+    signin: 'Вход',
     signup: 'Регистрация',
   },
 

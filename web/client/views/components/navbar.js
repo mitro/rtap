@@ -22,10 +22,8 @@ export default class Navbar extends Component {
   render () {
     var menu = this.renderMenu();
 
-    return <div className="m-navbar">
-      <div className="l-sidebar">
-        {menu}
-      </div>
+    return <div className="l-sidebar">
+      {menu}
       <div className="l-footer">
         <div className='m-footer'>
           © 2015 {this.lang.brand.shortname} | <a href="/about">{this.lang.captions.about}</a>
