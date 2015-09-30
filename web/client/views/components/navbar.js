@@ -1,14 +1,19 @@
 import React from 'react';
 import Component from '../../base/component';
 import currentUser from '../../stores/current_user';
+import auth from '../../modules/auth';
 
 
 export default class Navbar extends Component {
 
+  signout () {
+    auth.signout();
+  }
+
   renderMenu () {
     if (currentUser.authorized()) {
       return <ul>
-        <li><a href="/signout">Выйти</a></li>
+        <li><span onClick={this.signout}>Выйти</span></li>
       </ul>
     }
     else {

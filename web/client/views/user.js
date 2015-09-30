@@ -1,8 +1,7 @@
 import React from 'react';
 import Component from '../base/component';
-import auth from '../modules/auth';
+import Navbar from './components/navbar';
 import userStore from '../stores/user';
-import currentUser from '../stores/current_user';
 
 
 export default class User extends Component {
@@ -11,22 +10,17 @@ export default class User extends Component {
   }
 
   initState () {
-    let state = userStore.getState();
-    state.isOwner = state.user.username === currentUser.get('username');
-
-    return state;
-  }
-
-  logout () {
-    auth.signout();
+    return userStore.getState();
   }
 
   render () {
     let { user } = this.state;
 
-    return <div>
-      <p>Пользователь {user.username}</p>
-      <a onClick={this.logout}>{this.lang.captions.logout}</a>
+    return <div className="l-layout p-user">
+      <Navbar/>
+      <div className="l-content">
+        <p>Пользователь {user.username}</p>
+      </div>
     </div>
   }
 }
