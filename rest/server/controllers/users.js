@@ -24,9 +24,11 @@ export default class UsersController extends ModelController {
   get (req, res, next) {
     var username = req.params.username;
 
-    if (username === 'profile') {
-      username = req.user.username;
+    if (username !== 'profile') {
+      return this.notFound(res);
     }
+
+    username = req.user.username;
 
     this.Model.findOne({ username }).lean().exec((err, user) => {
       if (err) {

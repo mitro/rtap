@@ -6,9 +6,8 @@ import UserView from '../views/user';
 
 export default class UserController extends Controller {
   index (ctx, done) {
-    let { username } = ctx.params;
     let user = this.wrapModel(new UserModel());
-    user.username = username;
+    user.username = 'profile';
     this.xhrs.user = user.fetch();
 
     let dfd = Q.all([this.xhrs.user]);

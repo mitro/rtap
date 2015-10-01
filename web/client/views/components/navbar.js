@@ -10,10 +10,10 @@ export default class Navbar extends Component {
     auth.signout();
   }
 
-  renderMenu () {
+  createMenu () {
     if (currentUser.authorized()) {
       return <ul>
-        <li><span onClick={this.signout}>Выйти</span></li>
+        <li><a href='#' onClick={this.signout}>Выйти</a></li>
       </ul>
     }
     else {
@@ -25,7 +25,7 @@ export default class Navbar extends Component {
   }
 
   render () {
-    var menu = this.renderMenu();
+    var menu = this.createMenu();
 
     return <div className="l-sidebar">
       {menu}
