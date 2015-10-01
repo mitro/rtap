@@ -19,7 +19,7 @@ export default class User extends Component {
     return <div className="l-layout p-user">
       <Navbar/>
       <div className="l-content">
-        <p>Пользователь {user.username}</p>
+        Пользователь {user.username}
       </div>
     </div>
   }
