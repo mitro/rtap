@@ -34,7 +34,7 @@ export default class ModelController extends Controller {
       throw new Error('Actions are not specified');
     }
 
-    var baseUrl = `/api/v1${this.urlPrefix}`;
+    var baseUrl = `/api${this.urlPrefix}`;
 
     if (this.auth) {
       this._app.use(baseUrl, middlewares.auth);
