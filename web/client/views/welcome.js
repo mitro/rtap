@@ -1,6 +1,6 @@
 import React from 'react';
 import Component from '../base/component';
-import Footer from './components/footer';
+import Navbar from './components/navbar';
 
 
 export default class Welcome extends Component {
@@ -10,26 +10,7 @@ export default class Welcome extends Component {
 
   render () {
     return <div className="l-layout p-welcome">
-      <div className="l-sidebar">
-        <form className="p-w-login-form">
-          <div className="m-control-list">
-            <div className="m-control-group">
-              <span className="m-cg-icon icon-user"></span>
-              <input type="text" className="m-control" placeholder={this.lang.fields.username} required />
-            </div>
-            <div className="m-control-group">
-              <span className="m-cg-icon icon-lock"></span>
-              <input type="password" className="m-control" placeholder={this.lang.fields.password} required />
-            </div>
-          </div>
-          <p className="l-text-center">
-            <button type="submit" className="m-btn">{this.lang.captions.signin}</button>
-          </p>
-        </form>
-        <p>
-          <a href="/signup" className="m-btn m-btn-block m-btn-link">{this.lang.captions.signup}</a>
-        </p>
-      </div>
+      <Navbar/>
       <div className="l-content">
         <div className="p-w-logo">
           <div className="m-logo m-logo-large">
@@ -46,11 +27,6 @@ export default class Welcome extends Component {
           </div>
         </div>
       </div>
-      <div className="l-footer">
-        <div className='m-footer'>
-          © 2015 {this.lang.brand.shortname} | <a href="/about">{this.lang.captions.about}</a>
-        </div>
-      </div>
-    </div>;
+    </div>
   }
 }

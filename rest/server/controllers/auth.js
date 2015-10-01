@@ -20,7 +20,7 @@ export default class AuthController extends ModelController {
       expires = new Date(),
       claims = {
         sub: user._id,
-        iss: 'https://walk.com',
+        iss: 'https://rtap.com',
         permissions: ''
       },
 

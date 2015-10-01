@@ -1,5 +1,6 @@
 ---
 - name: Install git
-  apt: name={{ item }} state=present
-  with_items:
-    - git
+  apt: name=git state=present
+
+- name: Install aptitude
+  apt: name=aptitude state=present
