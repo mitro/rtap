@@ -5,21 +5,21 @@ import auth from '../../modules/auth';
 
 
 export default class Navbar extends Component {
-
   signout () {
     auth.signout();
   }
 
   createMenu () {
     if (currentUser.authorized()) {
-      return <ul className="m-nm-list">
+      return <ul className='m-nm-list'>
+        <li><a href='/violations'>Нарушения</a></li>
         <li><a onClick={this.signout}>Выйти</a></li>
       </ul>
     }
     else {
-      return <ul className="m-nm-list">
-        <li><a href="/signin">Войти</a></li>
-        <li><a href="/signup">Зарегистрироваться</a></li>
+      return <ul className='m-nm-list'>
+        <li><a href='/signin'>Войти</a></li>
+        <li><a href='/signup'>Зарегистрироваться</a></li>
       </ul>
     }
   }

@@ -13,6 +13,7 @@ export default {
     welcome: 'Добро пожаловать',
     signin: 'Вход',
     signup: 'Регистрация',
+    violations: 'Нарушения',
   },
 
   captions: {

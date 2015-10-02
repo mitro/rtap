@@ -22,13 +22,17 @@ export default class Router extends BaseRouter {
     this.route('/', 'welcome.index');
     this.route('/signup', 'welcome.signup');
     this.route('/signin', 'welcome.signin');
+
     this.route('/user/:username', 'user.index');
+
+    this.route('/violations', 'violation.index');
   }
 }
 
 Router.prototype.controllers = {
   welcome: require('./controllers/welcome'),
   user: require('./controllers/user'),
+  violation: require('./controllers/violation'),
 };
 
 Router.prototype.auth = require('./middlewares/auth');

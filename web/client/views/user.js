@@ -16,9 +16,9 @@ export default class User extends Component {
   render () {
     let { user } = this.state;
 
-    return <div className="l-layout p-user">
+    return <div className='l-layout p-user'>
       <Navbar/>
-      <div className="l-content">
+      <div className='l-content'>
         Пользователь {user.username}
       </div>
     </div>
