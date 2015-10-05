@@ -31,37 +31,21 @@ export default class Signup extends Form {
     return <div className='l-layout p-signup'>
       <Navbar/>
       <div className='l-content'>
-        <div className='p-s-form'>
+        <h1 className='cyan-text text-darken-3'>Регистрация</h1>
+        <div className='p-s-form card-panel'>
           <form onSubmit={this.handleSubmit}>
-            <div className='m-control-group'>
-              <span className='m-cg-icon icon-user'></span>
-              <input valueLink={this.linkState('model.username')} type='text' className='m-control' placeholder={this.lang.fields.username} required />
-            </div>
-            <div className='m-control-group'>
-              <span className='m-cg-icon icon-user'></span>
-              <input valueLink={this.linkState('model.full_name')} type='text' className='m-control' placeholder={this.lang.fields.full_name} required/>
-            </div>
-            <div className='m-control-group'>
-              <span className='m-cg-icon icon-mail-alt'></span>
-              <input valueLink={this.linkState('model.email')} type='text' className='m-control' placeholder={this.lang.fields.email} required />
-            </div>
-            <div className='m-control-list'>
-              <div className='m-control-group'>
-                <span className='m-cg-icon icon-lock'></span>
-                <input valueLink={this.linkState('model.password')} type='password' className='m-control' placeholder={this.lang.fields.password} required />
-              </div>
-              <div className='m-control-group'>
-                <span className='m-cg-icon icon-lock'></span>
-                <input valueLink={this.linkState('model.confirm_password')} type='password' className='m-control' placeholder={this.lang.fields.confirm_password} required />
-              </div>
-            </div>
+            <input valueLink={this.linkState('model.username')} type='text' placeholder={this.lang.fields.username} required />
+            <input valueLink={this.linkState('model.full_name')} type='text' placeholder={this.lang.fields.full_name} required/>
+            <input valueLink={this.linkState('model.email')} type='text' placeholder={this.lang.fields.email} required />
+            <input valueLink={this.linkState('model.password')} type='password' placeholder={this.lang.fields.password} required />
+            <input valueLink={this.linkState('model.confirm_password')} type='password' placeholder={this.lang.fields.confirm_password} required />
             <p className='l-text-center'>
-              <button type='submit' className='m-btn'>{this.lang.captions.signup}</button>
+              <button type='submit' className='btn waves-effect waves-light'>{this.lang.captions.signup}</button>
             </p>
           </form>
         </div>
       </div>
-      
+
     </div>
   }
 }
