@@ -5,21 +5,18 @@ import auth from '../../modules/auth';
 
 
 export default class Navbar extends Component {
-  signout () {
-    auth.signout();
-  }
 
   createMenu () {
     if (currentUser.authorized()) {
-      return <ul className='m-nm-list'>
-        <li><a href='/violations'>Нарушения</a></li>
-        <li><a onClick={this.signout}>Выйти</a></li>
+      return <ul className='m-n-menu collection'>
+        <li><a className='collection-item' href='/violations'>Нарушения</a></li>
+        <li><a className='collection-item' href='/signout'>Выйти</a></li>
       </ul>
     }
     else {
-      return <ul className='m-nm-list'>
-        <li><a href='/signin'>Войти</a></li>
-        <li><a href='/signup'>Зарегистрироваться</a></li>
+      return <ul className='m-n-menu collection'>
+        <li><a className='collection-item' href='/signin'>Войти</a></li>
+        <li><a className='collection-item' href='/signup'>Зарегистрироваться</a></li>
       </ul>
     }
   }
@@ -27,7 +24,7 @@ export default class Navbar extends Component {
   render () {
     var menu = this.createMenu();
 
-    return <div className="l-sidebar m-navbar">
+    return <div className="l-sidebar m-navbar card">
       <div className="m-n-menu">
         {menu}
       </div>
