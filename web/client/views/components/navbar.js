@@ -9,12 +9,14 @@ export default class Navbar extends Component {
   createMenu () {
     if (currentUser.authorized()) {
       return <ul className='m-n-menu collection'>
+        <li><a className='collection-item' href='/'>Главная</a></li>
         <li><a className='collection-item' href='/violations'>Нарушения</a></li>
         <li><a className='collection-item' href='/signout'>Выйти</a></li>
       </ul>
     }
     else {
       return <ul className='m-n-menu collection'>
+        <li><a className='collection-item' href='/'>Главная</a></li>
         <li><a className='collection-item' href='/signin'>Войти</a></li>
         <li><a className='collection-item' href='/signup'>Зарегистрироваться</a></li>
       </ul>
@@ -24,7 +26,7 @@ export default class Navbar extends Component {
   render () {
     var menu = this.createMenu();
 
-    return <div className="l-sidebar m-navbar card">
+    return <div className="l-sidebar m-navbar card-panel">
       <div className="m-n-menu">
         {menu}
       </div>
