@@ -19,8 +19,16 @@ export default {
   captions: {
     signin: 'Войти',
     signup: 'Зарегистрироваться',
-    logout: 'Выйти',
     about: 'О проекте',
+  },
+
+  links: {
+    welcome: 'Главная',
+    home: 'Главная',
+    signin: 'Войти',
+    signup: 'Зарегистрироваться',
+    signout: 'Выйти',
+    violations: 'Нарушения',
   },
 
   fields: {

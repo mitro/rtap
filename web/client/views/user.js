@@ -1,6 +1,7 @@
 import React from 'react';
 import Component from '../base/component';
 import Navbar from './components/navbar';
+import PageHeader from './components/page_header';
 import userStore from '../stores/user';
 
 
@@ -19,7 +20,7 @@ export default class User extends Component {
     return <div className='l-layout p-user'>
       <Navbar/>
       <div className='l-content'>
-        Пользователь {user.username}
+        <PageHeader>{user.username}</PageHeader>
       </div>
     </div>
   }

@@ -3,11 +3,8 @@ html
   head
     title!= title
 
-    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Roboto&subset=latin,cyrillic')
     link(rel='stylesheet', href='http://fonts.googleapis.com/icon?family=Material+Icons')
-
-    link(rel='stylesheet', type='text/css', href='/assets/materialize/css/materialize.css')
-
+    link(rel='stylesheet', type='text/css', href='/vendor/materialize/css/materialize.css')
     link(rel='stylesheet', href='/assets/style.css')
   body
     #app-node!= html
@@ -20,6 +17,6 @@ html
         stores: !{stores}
       };
 
-    script(type='text/javascript', source='/assets/jquery/jquery.min.js')
-    script(type='text/javascript', source='/assets/materialize/js/materialize.js')
+    script(type='text/javascript', source='/vendor/jquery/jquery.min.js')
+    script(type='text/javascript', source='/vendor/materialize/js/materialize.js')
     script(type='text/javascript', src='/assets/script.js')

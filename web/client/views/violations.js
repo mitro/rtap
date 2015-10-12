@@ -1,6 +1,7 @@
 import React from 'react';
 import Component from '../base/component';
 import Navbar from './components/navbar';
+import PageHeader from './components/page_header';
 
 
 export default class Violations extends Component {
@@ -12,7 +13,7 @@ export default class Violations extends Component {
     return <div className='l-layout p-violations'>
       <Navbar/>
       <div className='l-content'>
-        Нарушения
+        <PageHeader>Нарушения</PageHeader>
       </div>
     </div>
   }

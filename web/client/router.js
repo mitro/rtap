@@ -6,7 +6,7 @@ import currentUser from './stores/current_user';
 export default class Router extends BaseRouter {
   run () {
     super.run();
-    vent.on('user:signin', () => this.routeTo(`/user/${currentUser.get('username')}`));
+    vent.on('user:signin', () => this.routeTo('/user'));
     vent.on('user:signout', () => this.routeTo('/'));
   }
 
@@ -24,7 +24,7 @@ export default class Router extends BaseRouter {
     this.route('/signin', 'welcome.signin');
     this.route('/signout', 'welcome.signout');
 
-    this.route('/user/:username', 'user.index');
+    this.route('/user', 'user.index');
 
     this.route('/violations', 'violation.index');
   }

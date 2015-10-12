@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from '../base/form';
 import Navbar from './components/navbar';
+import PageHeader from './components/page_header';
 import UserModel from '../models/user';
 import auth from '../modules/auth';
 
@@ -31,7 +32,7 @@ export default class Signup extends Form {
     return <div className='l-layout p-signup'>
       <Navbar/>
       <div className='l-content'>
-        <h1 className='cyan-text text-darken-3'>Регистрация</h1>
+        <PageHeader>Регистрация</PageHeader>
         <div className='p-s-form card-panel'>
           <form onSubmit={this.handleSubmit}>
             <input valueLink={this.linkState('model.username')} type='text' placeholder={this.lang.fields.username} required />
@@ -45,7 +46,6 @@ export default class Signup extends Form {
           </form>
         </div>
       </div>
-
     </div>
   }
 }
