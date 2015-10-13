@@ -19,7 +19,7 @@ export function dev (req, res, next) {
 
   parsedUrl = url.parse(referer);
 
-  if (CORS_REGEXP.test(parsedUrl.hostname)) {
+  if (CORS_REGEXP.test(parsedUrl.hostname) || parsedUrl.hostname == '52.88.29.192') {
     let origin = `${parsedUrl.protocol}//${parsedUrl.host}`;
     res.header('Access-Control-Allow-Origin', origin);
     res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE');

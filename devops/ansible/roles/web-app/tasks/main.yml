@@ -37,8 +37,6 @@
   command: gulp
   args:
     chdir: "{{ web_app_folder }}"
-  environment:
-    NODE_ENV: "{{ web_app_env }}"
   become: false
 
 - name: copy upstart config for web app
