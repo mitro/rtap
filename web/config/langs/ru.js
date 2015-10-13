@@ -10,16 +10,25 @@ export default {
   },
 
   titles: {
-    welcome: 'Добро пожаловать',
+    welcome: 'Новости',
     signin: 'Вход',
     signup: 'Регистрация',
+    violations: 'Нарушения',
   },
 
   captions: {
     signin: 'Войти',
     signup: 'Зарегистрироваться',
-    logout: 'Выйти',
     about: 'О проекте',
+  },
+
+  links: {
+    welcome: 'Главная',
+    home: 'Главная',
+    signin: 'Войти',
+    signup: 'Зарегистрироваться',
+    signout: 'Выйти',
+    violations: 'Нарушения',
   },
 
   fields: {

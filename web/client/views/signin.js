@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from '../base/form';
 import Navbar from './components/navbar';
+import PageHeader from './components/page_header';
 import auth from '../modules/auth';
 
 
@@ -19,23 +20,16 @@ export default class Signin extends Form {
   }
 
   render () {
-    return <div className="l-layout p-signin">
+    return <div className='l-layout p-signin'>
       <Navbar/>
-      <div className="l-content">
-        <div className="p-s-form">
+      <div className='l-content'>
+        <PageHeader>{this.lang.titles.signin}</PageHeader>
+        <div className='p-s-form card-panel'>
           <form onSubmit={this.handleSubmit}>
-            <div className="m-control-list">
-              <div className="m-control-group">
-                <span className="m-cg-icon icon-user"></span>
-                <input valueLink={this.linkState('model.username')} type="text" className="m-control" placeholder={this.lang.fields.username} required />
-              </div>
-              <div className="m-control-group">
-                <span className="m-cg-icon icon-lock"></span>
-                <input valueLink={this.linkState('model.password')} type="password" className="m-control" placeholder={this.lang.fields.password} required />
-              </div>
-            </div>
-            <p className="l-text-center">
-              <button type="submit" className="m-btn">{this.lang.captions.signin}</button>
+            <input valueLink={this.linkState('model.username')} type='text' placeholder={this.lang.fields.username} required />
+            <input valueLink={this.linkState('model.password')} type='password' placeholder={this.lang.fields.password} required />
+            <p className='l-text-center'>
+              <button className='btn' type='submit'>{this.lang.captions.signin}</button>
             </p>
           </form>
         </div>
