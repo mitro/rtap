@@ -9,3 +9,5 @@ service_name: rtap_web_app
 
 forever_min_uptime: 5000
 forever_spin_sleep_time: 2000
+
+web_app_env: staging
