@@ -32,7 +32,7 @@ export default class Signup extends Form {
     return <div className='l-layout p-signup'>
       <Navbar/>
       <div className='l-content'>
-        <PageHeader>Регистрация</PageHeader>
+        <PageHeader>{this.lang.titles.signup}</PageHeader>
         <div className='p-s-form card-panel'>
           <form onSubmit={this.handleSubmit}>
             <input valueLink={this.linkState('model.username')} type='text' placeholder={this.lang.fields.username} required />
@@ -41,7 +41,7 @@ export default class Signup extends Form {
             <input valueLink={this.linkState('model.password')} type='password' placeholder={this.lang.fields.password} required />
             <input valueLink={this.linkState('model.confirm_password')} type='password' placeholder={this.lang.fields.confirm_password} required />
             <p className='l-text-center'>
-              <button type='submit' className='btn waves-effect waves-light'>{this.lang.captions.signup}</button>
+              <button type='submit' className='btn'>{this.lang.captions.signup}</button>
             </p>
           </form>
         </div>

@@ -13,7 +13,7 @@ export default class Violations extends Component {
     return <div className='l-layout p-violations'>
       <Navbar/>
       <div className='l-content'>
-        <PageHeader>Нарушения</PageHeader>
+        <PageHeader>{this.lang.titles.violations}</PageHeader>
       </div>
     </div>
   }

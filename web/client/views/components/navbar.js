@@ -25,13 +25,13 @@ export default class Navbar extends Component {
   }
 
   render () {
-    return <div className="l-sidebar m-navbar card-panel">
-      <div className="m-n-menu">
+    return <div className='l-sidebar m-navbar card-panel'>
+      <div className='m-n-menu'>
         <NavbarMenu links={this.getLinks()}/>
       </div>
-      <div className="l-footer">
+      <div className='l-footer'>
         <div className='m-footer'>
-          © 2015 {this.lang.brand.shortname} | <a href="/about">{this.lang.captions.about}</a>
+          © 2015 {this.lang.brand.shortname} | <a href='/about'>{this.lang.captions.about}</a>
         </div>
       </div>
     </div>
@@ -42,9 +42,7 @@ class NavbarMenu extends Component {
   render () {
     let links = _.map(this.props.links, l => <Link href={l.href}>{l.text}</Link>);
 
-    return <ul className='m-n-menu collection'>
-      {links}
-    </ul>
+    return <ul className='m-n-menu collection'>{links}</ul>
   }
 }
 

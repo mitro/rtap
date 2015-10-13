@@ -10,7 +10,7 @@ export default {
   },
 
   titles: {
-    welcome: 'Добро пожаловать',
+    welcome: 'Новости',
     signin: 'Вход',
     signup: 'Регистрация',
     violations: 'Нарушения',
