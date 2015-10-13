@@ -20,6 +20,7 @@ export default {
     signin: 'Войти',
     signup: 'Зарегистрироваться',
     about: 'О проекте',
+    pay: 'Оплатить',
   },
 
   links: {
