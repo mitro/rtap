@@ -42,5 +42,9 @@ export default {
 
   messages: {
 
-  }
+  },
+
+  templates: {
+    violation_descr: `Водитель <%= name %> на автомобиле <%= model %> <%= plate %>. <%= descr %>`,
+  },
 };
