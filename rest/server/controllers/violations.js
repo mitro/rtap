@@ -12,7 +12,7 @@ export default class ViolationsController extends ModelController {
 
   list (req, res, next) {
     res.json({
-      total: 1,
+      total: 2,
       page: 1,
       per_page: 20,
       collection: [{
@@ -26,6 +26,18 @@ export default class ViolationsController extends ModelController {
         model: 'LEXUS RX350',
         plate: 'H326MDM',
         date: new Date(2015, 5, 19, 14, 40, 11),
+        status: 'Не оплачено',
+      }, {
+        _id: 2,
+        __v: 0,
+        sum: 17366,
+        name: 'УЛЬЯНОВ ИОСИФ',
+        descr: 'Несоблюдение требований, предписанных дорожными знаками или разметкой проезжей части дороги.',
+        post: 'пр. Туран - ул. Челюскинцев',
+        number: '0326.6543001',
+        model: 'LEXUS RX350',
+        plate: 'H326MDM',
+        date: new Date(2015, 9, 2, 4, 12, 50),
         status: 'Не оплачено',
       }]
     });

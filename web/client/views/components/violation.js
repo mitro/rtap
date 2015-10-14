@@ -11,7 +11,7 @@ export default class Violation extends Component {
 
   initState (props) {
     return {
-      violation: props.data.violation,
+      violation: props.violation,
     };
   }
 

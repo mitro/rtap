@@ -23,7 +23,8 @@ export default class Violations extends Component {
       <div className='l-content'>
         <PageHeader>{this.lang.titles.violations}</PageHeader>
         {violations.map((violation, index) => {
-          return <ViolationCard key={{index}} data={{violation}}/>;
+          console.log(typeof index);
+          return <ViolationCard key={index} violation={violation}/>;
         })}
       </div>
     </div>
