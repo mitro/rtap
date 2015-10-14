@@ -7,6 +7,7 @@ import UserView from '../views/user';
 export default class UserController extends Controller {
   index (ctx, done) {
     let user = this.wrapModel(new UserModel());
+
     user.username = 'profile';
     this.xhrs.user = user.fetch();
 

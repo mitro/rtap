@@ -20,6 +20,7 @@ export default {
     signin: 'Войти',
     signup: 'Зарегистрироваться',
     about: 'О проекте',
+    pay: 'Оплатить',
   },
 
   links: {
@@ -41,5 +42,9 @@ export default {
 
   messages: {
 
-  }
+  },
+
+  templates: {
+    violation_descr: `Водитель <%= name %> на автомобиле <%= model %> <%= plate %>. <%= descr %>`,
+  },
 };
