@@ -1,5 +1,6 @@
 import ModelController from '../base/model_controller';
 
+
 export default class ViolationsController extends ModelController {
   constructor () {
     super();
