@@ -7,7 +7,7 @@ export default class ViolationsController extends ModelController {
     this.urlPrefix = '/violations';
     this.actions = ['list'];
 
-    //this.auth = true;
+    this.auth = true;
   }
 
   list (req, res, next) {
@@ -16,7 +16,8 @@ export default class ViolationsController extends ModelController {
       page: 1,
       per_page: 20,
       collection: [{
-        id: 1,
+        _id: 1,
+        __v: 0,
         sum: 9052,
         name: 'УЛЬЯНОВ ИОСИФ',
         descr: 'Несоблюдение требований, предписанных дорожными знаками или разметкой проезжей части дороги.',
