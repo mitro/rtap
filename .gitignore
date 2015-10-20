@@ -3,4 +3,8 @@
 /web/node_modules
 /web/public/assets/*
 
+/violation_proxy/target/*
+/violation_proxy/dependency-reduced-pom.xml
+/violation_proxy/violation_proxy.iml
+
 npm-debug.log
