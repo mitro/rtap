@@ -46,6 +46,7 @@ public class ViolationsResource {
 
   private Violation createViolation(ViolationGetWcfData violationData) {
     return new Violation(
+      "077FSA02",
       violationData.getColor().getValue(),
       violationData.getFixationDate().toGregorianCalendar().getTime(),
       violationData.getFineCost().doubleValue(),

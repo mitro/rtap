@@ -10,5 +10,10 @@ export default {
   secret: 'ifyouwannabeoksaythisphraseeveryday',
   jwt: {
     expires: 1440
+  },
+  proxy: {
+    violations: {
+      url: 'http://127.0.0.1:9080/violations'
+    }
   }
 };

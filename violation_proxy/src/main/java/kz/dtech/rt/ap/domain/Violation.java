@@ -6,6 +6,7 @@ import java.util.Date;
  * @author Dmitriy Melnik (d.b.melnik@yandex.ru) on 21.10.15.
  */
 public class Violation {
+  private final String plate;
   private final String color;
   private final Date fixationDate;
   private final double fineCost;
@@ -25,7 +26,8 @@ public class Violation {
   private final String driverLastName;
   private final String driverFullName;
 
-  public Violation(String color, Date fixationDate, double fineCost, boolean isLegalEntity, boolean isRepeated, String model, String orderNumber, String postAddress, String status, String statusNameRu, String statusNameKz, String typeNameRu, String typeNameKz, String typeNameShort, String driverFirstName, String driverSecondName, String driverLastName, String driverFullName) {
+  public Violation(String plate, String color, Date fixationDate, double fineCost, boolean isLegalEntity, boolean isRepeated, String model, String orderNumber, String postAddress, String status, String statusNameRu, String statusNameKz, String typeNameRu, String typeNameKz, String typeNameShort, String driverFirstName, String driverSecondName, String driverLastName, String driverFullName) {
+    this.plate = plate;
     this.color = color;
     this.fixationDate = fixationDate;
     this.fineCost = fineCost;
@@ -44,5 +46,79 @@ public class Violation {
     this.driverSecondName = driverSecondName;
     this.driverLastName = driverLastName;
     this.driverFullName = driverFullName;
+  }
+
+  public String getPlate() { return plate; }
+
+  public String getColor() {
+    return color;
+  }
+
+  public Date getFixationDate() {
+    return fixationDate;
+  }
+
+  public double getFineCost() {
+    return fineCost;
+  }
+
+  public boolean isLegalEntity() {
+    return isLegalEntity;
+  }
+
+  public boolean isRepeated() {
+    return isRepeated;
+  }
+
+  public String getModel() {
+    return model;
+  }
+
+  public String getOrderNumber() {
+    return orderNumber;
+  }
+
+  public String getPostAddress() {
+    return postAddress;
+  }
+
+  public String getStatus() {
+    return status;
+  }
+
+  public String getStatusNameRu() {
+    return statusNameRu;
+  }
+
+  public String getStatusNameKz() {
+    return statusNameKz;
+  }
+
+  public String getTypeNameRu() {
+    return typeNameRu;
+  }
+
+  public String getTypeNameKz() {
+    return typeNameKz;
+  }
+
+  public String getTypeNameShort() {
+    return typeNameShort;
+  }
+
+  public String getDriverFirstName() {
+    return driverFirstName;
+  }
+
+  public String getDriverSecondName() {
+    return driverSecondName;
+  }
+
+  public String getDriverLastName() {
+    return driverLastName;
+  }
+
+  public String getDriverFullName() {
+    return driverFullName;
   }
 }

@@ -1,4 +1,6 @@
-import soap from 'soap';
+import _ from 'lodash';
+import request from 'request';
+import config from 'config';
 import ModelController from '../base/model_controller';
 
 
@@ -15,52 +17,28 @@ export default class ViolationsController extends ModelController {
   }
 
   list (req, res, next) {
-
-    soap.createClient(url, (err, client) => {
-      if (err) return next(err);
-
-      let request = {
-        parameters: {
-          TransportNumber: '077FSA02',
-          NumberSrts: 'AS00081467',
-        }
-      };
-
-      client.GetViolations(request, (err, result) => {
-        if (err) return next(err);
-
-        console.log(result.GetViolationsResult);
-
-        res.json({
-          total: 2,
-          page: 1,
-          per_page: 20,
-          collection: [{
-            _id: 1,
-            __v: 0,
-            sum: 9052,
-            name: 'УЛЬЯНОВ ИОСИФ',
-            descr: 'Несоблюдение требований, предписанных дорожными знаками или разметкой проезжей части дороги.',
-            post: 'пр. Республики - ул. Иманова',
-            number: '0326.4380015',
-            model: 'LEXUS RX350',
-            plate: 'H326MDM',
-            date: new Date(2015, 5, 19, 14, 40, 11),
-            status: 'Не оплачено',
-          }, {
-            _id: 2,
-            __v: 0,
-            sum: 17366,
-            name: 'УЛЬЯНОВ ИОСИФ',
-            descr: 'Несоблюдение требований, предписанных дорожными знаками или разметкой проезжей части дороги.',
-            post: 'пр. Туран - ул. Челюскинцев',
-            number: '0326.6543001',
-            model: 'LEXUS RX350',
-            plate: 'H326MDM',
-            date: new Date(2015, 9, 2, 4, 12, 50),
-            status: 'Не оплачено',
-          }]
+    request (config.proxy.violations.url, (err, response, body) => {
+      let collection = [];
+      _.forEach(JSON.parse(body), (violation) => {
+        collection.push({
+          __v: 0,
+          sum: violation.fineCost,
+          name: violation.driverFullName,
+          descr: violation.typeNameRu,
+          post: violation.postAddress,
+          number: violation.orderNumber,
+          model: violation.model,
+          plate: violation.plate,
+          date: violation.fixationDate,
+          status: violation.statusNameRu,
         });
+      });
+
+      res.json({
+        total: collection.length,
+        page: 1,
+        per_page: 20,
+        collection
       });
     });
   }
