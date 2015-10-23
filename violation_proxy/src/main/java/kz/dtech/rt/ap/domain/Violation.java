@@ -6,7 +6,7 @@ import java.util.Date;
  * @author Dmitriy Melnik (d.b.melnik@yandex.ru) on 21.10.15.
  */
 public class Violation {
-  private final String plate;
+  private final String grnz;
   private final String color;
   private final Date fixationDate;
   private final double fineCost;
@@ -26,8 +26,8 @@ public class Violation {
   private final String driverLastName;
   private final String driverFullName;
 
-  public Violation(String plate, String color, Date fixationDate, double fineCost, boolean isLegalEntity, boolean isRepeated, String model, String orderNumber, String postAddress, String status, String statusNameRu, String statusNameKz, String typeNameRu, String typeNameKz, String typeNameShort, String driverFirstName, String driverSecondName, String driverLastName, String driverFullName) {
-    this.plate = plate;
+  public Violation(String grnz, String color, Date fixationDate, double fineCost, boolean isLegalEntity, boolean isRepeated, String model, String orderNumber, String postAddress, String status, String statusNameRu, String statusNameKz, String typeNameRu, String typeNameKz, String typeNameShort, String driverFirstName, String driverSecondName, String driverLastName, String driverFullName) {
+    this.grnz = grnz;
     this.color = color;
     this.fixationDate = fixationDate;
     this.fineCost = fineCost;
@@ -48,7 +48,7 @@ public class Violation {
     this.driverFullName = driverFullName;
   }
 
-  public String getPlate() { return plate; }
+  public String getGrnz() { return grnz; }
 
   public String getColor() {
     return color;

@@ -17,7 +17,14 @@ export default class ViolationsController extends ModelController {
   }
 
   list (req, res, next) {
-    request (config.proxy.violations.url, (err, response, body) => {
+    let options = {
+      url: config.proxy.violations.url,
+      qs: {
+        grnz: '077FSA02',
+        srts: 'AS00081467',
+      }
+    };
+    request (options, (err, response, body) => {
       let collection = [];
       _.forEach(JSON.parse(body), (violation) => {
         collection.push({
